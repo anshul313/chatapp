@@ -1,0 +1,388 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin leptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+
+.formContainer {
+  background-image: linear-gradient(140deg, blue, #b71717);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-reflect: below 0px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+
+  .formWrapper {
+    background-color: #7a0505;
+    color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    .profileImg {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+    button {
+      background-color: #e70000;
+      color: #ddddf7;
+      border-radius: 5px;
+      font-size: 12px;
+      height: 30px;
+      border: none;
+      cursor: pointer;
+    }
+    .logo {
+      color: #cccbdf;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .title {
+      color: #cccbdf;
+      font-size: 15px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        width: 250px;
+        padding: 15px;
+        color: white;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-bottom: 1px solid #a7bcff;
+
+        &::placeholder {
+          color: rgb(175, 175, 175);
+        }
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #cccbdf;
+        font-size: 13px;
+        cursor: pointer;
+        img {
+          width: 32px;
+        }
+      }
+      button {
+        background-color: #4d0606;
+        color: #ffffff;
+        border-radius: 15px;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+      }
+      #file {
+        display: none;
+      }
+    }
+    p {
+      color: #cccbdf;
+      font-size: 12px;
+      margin-top: 10px;
+      a {
+        color: #8286ff;
+      }
+    }
+  }
+}
+
+.home {
+  background-color: #a7bcff;
+  background-image: linear-gradient(140deg, blue, #b71717);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .container {
+    border-radius: 10px;
+    width: 65%;
+    height: 80%;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-reflect: below 0px
+      linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    @include tablet {
+      width: 90%;
+    }
+    @include mobile {
+      width: 100%;
+      min-width: 400px;
+    }
+    .sidebar {
+      flex: 1;
+      background-color: #613c3c;
+      @include tablet {
+        position: relative;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        background-color: #522d2d;
+        height: 50px;
+        padding: 10px;
+        justify-content: space-between;
+        color: #ddddf7;
+
+        .logo {
+          font-weight: bold;
+          @include tablet {
+            display: none;
+          }
+        }
+        .user {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          a {
+            text-decoration: none;
+            color: white;
+          }
+          img {
+            background-color: #ddddf7;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          button {
+            background-color: #8d5b5b;
+            color: #ddddf7;
+            border-radius: 5px;
+            font-size: 10px;
+            height: 20px;
+            border: none;
+            cursor: pointer;
+            @include tablet {
+              position: absolute;
+              bottom: 10px;
+            }
+           
+          }
+          
+        }
+      }
+      .search {
+        border-bottom: 1px solid gray;
+
+        .searchForm {
+          padding: 10px;
+          input {
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: none;
+
+            &::placeholder {
+              color: lightgray;
+            }
+          }
+        }
+      }
+      .chats {
+        overflow-y: scroll;
+        height: 61vh;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      .userChat {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #522d2d;
+        }
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .userChatinfo {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-start;
+          span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+          p {
+            font-size: 14px;
+            color: lightgray;
+          }
+        }
+      }
+    }
+    .chat {
+      flex: 2;
+      .chatInfo {
+        height: 50px;
+        background-color: #8d5b5b;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: lightgray;
+        span{
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          img{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+          }
+        }
+
+        .chatIcons {
+          display: flex;
+          justify-content: space-between;
+          gap: 15px;
+          svg {
+            cursor: pointer;
+          }
+        }
+      }
+      .messages {
+        background-color: #ddddf7;
+        padding: 10px;
+        height: calc(100% - 160px);
+        overflow: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .message {
+          display: flex;
+          gap: 20px;
+          margin-bottom: 20px;
+
+          .messageInfo {
+            display: flex;
+            flex-direction: column;
+            color: gray;
+            font-weight: 300;
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+          .messageContent {
+            max-width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            p {
+              background-color: white;
+              padding: 10px 20px;
+              border-radius: 0px 10px 10px 10px;
+              max-width: max-content;
+            }
+            img {
+              width: 60%;
+              height: 60%;
+              border-radius: 10px 0px 10px 10px;
+            }
+          }
+          &.owner {
+            flex-direction: row-reverse;
+
+            .messageContent {
+              align-items: flex-end;
+            }
+            p {
+              background-color: #c73f3f;
+              color: white;
+              border-radius: 10px 0px 10px 10px;
+            }
+          }
+        }
+      }
+      .input {
+        height: 50px;
+        background-color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        input {
+          width: 100%;
+          border: none;
+          outline: none;
+          color: #2f2d52;
+          font-size: 18px;
+          &::placeholder {
+            color: lightgray;
+          }
+        }
+        .EmojiPickerReact{
+          position: absolute;
+          height: 350px;
+          width: 30% !important;
+          bottom: 160px;       
+        }
+        .send {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          svg {
+            cursor: pointer;
+          }
+          .emojiButton{
+            background-color: transparent;
+            color: rgb(122, 119, 119);
+            font-size: 30px;
+          }
+          button {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            background-color: #a90101;
+            cursor: pointer;
+          }
+          label {
+            img {
+              height: 24px;
+              width: 24px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
